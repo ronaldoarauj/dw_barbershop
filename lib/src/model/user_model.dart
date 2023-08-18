@@ -1,5 +1,3 @@
-
-
 sealed class UserModel {
   final int id;
   final String name;
@@ -12,6 +10,15 @@ sealed class UserModel {
     required this.email,
     this.avatar,
   });
+
+  factory UserModel.fromMap(Map<String, dynamic> json) {
+    return switch (json['profile']) {
+      'ADM' => UserModelADM.fromMap(json),
+      'EMPLOYEE' => UserModelEmployee.fromMap(json),
+      _ => throw ArgumentError('Usuario não existe')
+    };
+  }
+  
 }
 
 class UserModelADM extends UserModel {
@@ -42,7 +49,7 @@ class UserModelADM extends UserModel {
           workDays: json['work_days']?.cast<String>(),
           workHours: json['work_hours']?.cast<int>(),
         ),
-        _ => throw ArgumentError('Json Invalido'),
+      _ => throw ArgumentError('Json Invalido'),
     };
   }
 }
@@ -81,7 +88,7 @@ class UserModelEmployee extends UserModel {
           workDays: workDays.cast<String>(),
           workHours: workHours.cast<int>(),
         ),
-        _ => throw ArgumentError('Json Invalido'),
+      _ => throw ArgumentError('Json Invalido'),
     };
   }
 }
