@@ -1,4 +1,6 @@
 // import 'package:asyncstate/asyncstate.dart';
+import 'dart:async';
+
 import 'package:dw_barbershop/src/core/ui/constants.dart';
 import 'package:dw_barbershop/src/features/auth/login/login_page.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,9 @@ class _SplashPageState extends State<SplashPage> {
   double get _logoAnimationWidth => 100 * _scale;
   double get _logoAnimationHeight => 120 * _scale;
 
+  var endAnimation = false;
+  Timer? _redirectTimer;
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -26,6 +31,19 @@ class _SplashPageState extends State<SplashPage> {
       });
     });
     super.initState();
+  }
+
+  void _redirect(String routeName) {
+    if (!endAnimation) {
+      _redirectTimer?.cancel();
+      _redirectTimer = Timer(const Duration(milliseconds: 300), () {
+        _redirect(routeName);
+      });
+    } else {
+      _redirectTimer?.cancel();
+      Navigator.of(context)
+          .pushNamedAndRemoveUntil(routeName, (route) => false);
+    }
   }
 
   @override
@@ -44,8 +62,8 @@ class _SplashPageState extends State<SplashPage> {
         child: Center(
           child: AnimatedOpacity(
             duration: const Duration(seconds: 3),
-            curve: Curves.easeIn,
             opacity: _animationOpacityLogo,
+            curve: Curves.easeIn,
             onEnd: () {
               Navigator.of(context).pushAndRemoveUntil(
                   PageRouteBuilder(
