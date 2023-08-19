@@ -39,13 +39,13 @@ class UserModelADM extends UserModel {
       {
         'id': final int id,
         'name': final String name,
-        'emai': final String email,
+        'email': final String email,
       } =>
         UserModelADM(
           id: id,
           name: name,
           email: email,
-          avatar: json['avatar'],
+          // avatar: json['avatar'],
           workDays: json['work_days']?.cast<String>(),
           workHours: json['work_hours']?.cast<int>(),
         ),

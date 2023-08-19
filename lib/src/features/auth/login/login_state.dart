@@ -5,7 +5,7 @@ enum LoginStateStatus {
   initial,
   error,
   admLogin,
-  employerLogin,
+  employeeLogin,
 }
 
 class LoginState {

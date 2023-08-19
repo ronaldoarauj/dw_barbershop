@@ -20,7 +20,7 @@ class UserRepositoryImpl implements UserRepository {
   Future<Either<AuthException, String>> login(
       String email, String password) async {
     try {
-      final Response(:data) = await restClient.unAuth.post('auth', data: {
+      final Response(:data) = await restClient.unAuth.post('/auth', data: {
         'email': email,
         'password': password,
       });

@@ -5,5 +5,5 @@ void unfocus(BuildContext context){
 }
 
 extension UnFocusExtension on BuildContext{
-  void unfocus() => Focus.of(this).unfocus();
+  void unfocus() => FocusScope.of(this).unfocus();
 }
