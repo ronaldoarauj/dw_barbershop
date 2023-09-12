@@ -5,7 +5,7 @@ import 'package:dw_barbershop/src/core/restClient/interceptors/auth_intercptor.d
 final class RestClient extends DioForNative {
   RestClient()
       : super(BaseOptions(
-          baseUrl: 'http://192.168.0.139:8080',
+          baseUrl: 'http://192.168.10.110:8080',
           connectTimeout: const Duration(seconds: 30),
           receiveTimeout: const Duration(seconds: 80),
         )) {
