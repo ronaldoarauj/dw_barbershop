@@ -6,7 +6,7 @@ import 'package:dw_barbershop/src/features/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 
 import 'core/ui/barbershop_theme.dart';
-import 'features/auth/register/user_register_page.dart';
+import 'features/auth/register/user/user_register_page.dart';
 
 class BarbershopApp extends StatelessWidget {
   const BarbershopApp({super.key});
